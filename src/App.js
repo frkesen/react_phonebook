@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
 const style = {
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   table: {
     borderCollapse: 'collapse'
   },
@@ -17,7 +23,8 @@ const style = {
       border: '1px solid #F0F8FF',
       borderRadius: '15px',
       width: 'max-content',
-      marginBottom: '40px'
+      marginBottom: '40px',
+      marginTop: '40px',
     },
     inputs: {
       marginBottom: '5px'
@@ -32,7 +39,7 @@ const style = {
     }
   }
 }
-function PhoneBookForm({ handleNameChange, handleLastNameChange, handlePhoneChange, handleSubmit}) {
+function PhoneBookForm({ name, lastName, phone, handleNameChange, handleLastNameChange, handlePhoneChange, handleSubmit}) {
   return (
     <form onSubmit={handleSubmit} style={style.form.container}>
       <label>First name:</label>
@@ -44,7 +51,7 @@ function PhoneBookForm({ handleNameChange, handleLastNameChange, handlePhoneChan
         type='text'
         placeholder='Cooder'
         onChange={handleNameChange}
-        
+        value={name}
       />
       <br/>
       <label>Last name:</label>
@@ -56,6 +63,7 @@ function PhoneBookForm({ handleNameChange, handleLastNameChange, handlePhoneChan
         type='text' 
         placeholder='Byte'
         onChange={handleLastNameChange}
+        value = {lastName}
       />
       <br />
       <label>Phone:</label>
@@ -67,6 +75,7 @@ function PhoneBookForm({ handleNameChange, handleLastNameChange, handlePhoneChan
         type='text'
         placeholder='8885559999'
         onChange={handlePhoneChange}
+        value = {phone}
       />
       <br/>
       <input 
@@ -88,6 +97,8 @@ function InformationTable({info}) {
           <th style={style.tableCell}>Last name</th>
           <th style={style.tableCell}>Phone</th>
         </tr>
+      </thead>
+      <tbody>
         {info?.map(
         (table, index) => (
           <tr key={index} >
@@ -97,7 +108,7 @@ function InformationTable({info}) {
         </tr>
         )
       )}
-      </thead> 
+      </tbody> 
     </table>
   );
 };
@@ -139,15 +150,21 @@ function App(props) {
     }
     newInfo.sort( compare );
     setInfo(newInfo);
+    setName("");
+    setLastName("");
+    setPhone("");
   };
 
   return (
-    <section>
+    <section style={style.section} >
       <PhoneBookForm 
         handleNameChange={handleNameChange}
         handleLastNameChange={handleLastNameChange}
         handlePhoneChange={handlePhoneChange}
         handleSubmit={handleSubmit}
+        name = {name}
+        lastName = {lastName}
+        phone = {phone}
         
       />
       <InformationTable info={info} />
