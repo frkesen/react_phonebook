@@ -52,6 +52,7 @@ function PhoneBookForm({ name, lastName, phone, handleNameChange, handleLastName
         placeholder='Cooder'
         onChange={handleNameChange}
         value={name}
+        required
       />
       <br/>
       <label>Last name:</label>
@@ -64,6 +65,7 @@ function PhoneBookForm({ name, lastName, phone, handleNameChange, handleLastName
         placeholder='Byte'
         onChange={handleLastNameChange}
         value = {lastName}
+        required
       />
       <br />
       <label>Phone:</label>
@@ -76,6 +78,7 @@ function PhoneBookForm({ name, lastName, phone, handleNameChange, handleLastName
         placeholder='8885559999'
         onChange={handlePhoneChange}
         value = {phone}
+        required
       />
       <br/>
       <input 
