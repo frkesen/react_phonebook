@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
 const style = {
+  cw: {
+    width: "8%",
+    marginTop: "20px",
+    },
   section: {
     display: "flex",
     flexDirection: "column",
@@ -160,6 +164,11 @@ function App(props) {
 
   return (
     <section style={style.section} >
+      <img
+        style={style.cw}
+        src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"
+        alt="clarusway"
+      />
       <PhoneBookForm 
         handleNameChange={handleNameChange}
         handleLastNameChange={handleLastNameChange}
